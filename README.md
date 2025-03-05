@@ -31,14 +31,13 @@ Recent diffusion-based human image animation techniques have demonstrated impres
 Installation the python dependencies:
 
 ```
-git clone https://github.com/ali-vilab/UniAnimate.git
+git clone https://github.com/Sainzerjj/UniAnimate.git
 cd UniAnimate
 conda create -n UniAnimate python=3.9
 conda activate UniAnimate
 conda install pytorch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 pytorch-cuda=11.8 -c pytorch -c nvidia
 pip install -r requirements.txt
 ```
-We provide all the dependencies in `environment.yaml`. 
 
 ### (2) Download the pretrained checkpoints
 
