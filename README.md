@@ -63,13 +63,21 @@ Finally, the model weights will be organized in `./checkpoints/` as follows:
 ```
 ### (3) Prepare Dataset
 
+Modify the `vid_dataset` dictionary variable in `configs/UniAnimate_train_accelerate.yaml` to prepare the training dataset. The content of the JSON file consists of the training video and corresponding pose video paths, which would be read in the dataset class **UniAnimateDataset**, defined in `tools/dataset/unianimate_dataset.py`.
 
 ### (4) Training the UniAnimate
-
+Execute the following command to start training:
+```
+python scripts/train_accelerate.py --cfg configs/UniAnimate_train_accelerate.yaml 
+```
+or
+```
+bash train_accelerate.sh
+```
 
 ### (5) Pose alignment **(Important)**
 
-Please refer to the official repository's [Link](https://github.com/ali-vilab/UniAnimate) instructions.
+Rescale the target pose sequence to match the pose of the reference image. We modify the official alignment code to optimize the overall human body effect. The startup method remains the same. Please refer to the official repository's [Link](https://github.com/ali-vilab/UniAnimate) instructions. 
 
 ### (6) Run the UniAnimate model to generate videos
 
@@ -77,7 +85,11 @@ Please refer to the official repository's [Link](https://github.com/ali-vilab/Un
 
 Execute the following command to generate video clips:
 ```
-python inference.py --cfg configs/UniAnimate_infer.yaml 
+python scripts/inference.py --cfg configs/UniAnimate_infer.yaml 
+```
+or
+```
+bash inference.sh
 ```
 If you want to synthesize higher resolution results, you can change the default `resolution: [512, 768]` in `configs/UniAnimate_infer.yaml` to `resolution: [768, 1216]`. And execute the above command to generate video clips.
 
@@ -85,7 +97,11 @@ If you want to synthesize higher resolution results, you can change the default 
 
 If you want to synthesize videos as long as the target pose sequence, you can execute the following command to generate long videos:
 ```
-python inference.py --cfg configs/UniAnimate_infer_long.yaml
+python scripts/inference.py --cfg configs/UniAnimate_infer_long.yaml
+```
+or
+```
+bash inference.sh
 ```
 After this, long videos with the pre-set resolution will be generated.
 
