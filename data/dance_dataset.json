@@ -1,0 +1,37 @@
+[
+    {
+        "video_path": "/public_dataset/motion_generation/douyin_1080p/parts7/0171-6691607393425493251.mp4",
+        "kps_path": "/public_dataset/motion_generation/dwpose/douyin_1080p/parts7/0171-6691607393425493251.mp4",
+        "region": false
+    },
+    {
+        "video_path": "/public_dataset/motion_generation/douyin_1080p/parts7/0136-6912008926892395783.mp4",
+        "kps_path": "/public_dataset/motion_generation/dwpose/douyin_1080p/parts7/0136-6912008926892395783.mp4",
+        "region": false
+    },
+    {
+        "video_path": "/public_dataset/motion_generation/douyin_1080p/parts7/0158-7311533720274603279.mp4",
+        "kps_path": "/public_dataset/motion_generation/dwpose/douyin_1080p/parts7/0158-7311533720274603279.mp4",
+        "region": false
+    },
+    {
+        "video_path": "/public_dataset/motion_generation/douyin_1080p/parts7/0171-6553443997912665358.mp4",
+        "kps_path": "/public_dataset/motion_generation/dwpose/douyin_1080p/parts7/0171-6553443997912665358.mp4",
+        "region": false
+    },
+    {
+        "video_path": "/public_dataset/motion_generation/douyin_1080p/parts7/0161-7028133868393811230.mp4",
+        "kps_path": "/public_dataset/motion_generation/dwpose/douyin_1080p/parts7/0161-7028133868393811230.mp4",
+        "region": false
+    },
+    {
+        "video_path": "/public_dataset/motion_generation/douyin_1080p/parts7/0136-6808105029828955400.mp4",
+        "kps_path": "/public_dataset/motion_generation/dwpose/douyin_1080p/parts7/0136-6808105029828955400.mp4",
+        "region": false
+    },
+    {
+        "video_path": "/public_dataset/motion_generation/douyin_1080p/parts7/0136-6985858405017668902.mp4",
+        "kps_path": "/public_dataset/motion_generation/dwpose/douyin_1080p/parts7/0136-6985858405017668902.mp4",
+        "region": false
+    }
+]

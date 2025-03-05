@@ -1,0 +1,162 @@
+# default settings
+TASK_TYPE: train_unianimate_entrance_accelerate
+use_fp16: True
+ENABLE: True
+num_workers: 1
+frame_lens: [16, 16, 32, 32, 32, 32, 32, 32]
+sample_fps: [ 8, 16, 32, 16, 32, 8, 32, 32]
+batch_sizes: {
+    "1": 32,
+    "4": 8,
+    "8": 4,
+    "16": 1,
+    "32": 1
+}
+vit_resolution: [224, 224] # 224, 224
+# manual setting
+max_frames: 32
+resolution: [768, 1216]  # or resolution: [512, 768]
+# resolution: [768, 1216]
+
+partial_keys: [
+                    ['image', 'local_image', "dwpose", "randomref"], # reference image as the first frame of the generated video
+              ]
+
+vid_dataset: {
+    'type': 'UniAnimateDataset',
+    'data_dir_list': ['/home/admin/workspace/train_data/videos', ],
+    'vit_resolution': [224, 224],
+    'resolution': [768, 1216], # [768, 1216],
+    'get_first_frame': True,
+    'max_words': 1000,
+    'data_list': [
+      "data/dance_dataset.json",
+    ]
+}
+
+img_dataset: {
+    'type': 'ImageDataset',
+    'data_list': ['/home/admin/workspace/train_data/img_list.txt', ],
+    'data_dir_list': ['/home/admin/workspace/train_data/images', ],
+    'vit_resolution': [224, 224],
+    'resolution': [512, 768],
+    'max_words': 1000
+}
+
+embedder: {
+    'type': 'FrozenOpenCLIPTextVisualEmbedder',
+    'layer': 'penultimate',
+    'pretrained': 'checkpoints/open_clip_pytorch_model.bin'
+}
+
+auto_encoder: {
+    'type': 'AutoencoderKL',
+    'ddconfig': {
+        'double_z': True, 
+        'z_channels': 4,
+        'resolution': 256, 
+        'in_channels': 3,
+        'out_ch': 3, 
+        'ch': 128, 
+        'ch_mult': [1, 2, 4, 4],
+        'num_res_blocks': 2, 
+        'attn_resolutions': [], 
+        'dropout': 0.0,
+        'video_kernel_size': [3, 1, 1]
+    },
+    'embed_dim': 4,
+    'pretrained': 'checkpoints/v2-1_512-ema-pruned.safetensors'
+    # 'pretrained': 'checkpoints/v2-1_512-ema-pruned.ckpt'
+}
+
+UNet: {
+    'type': 'UNetSD_UniAnimate',
+    'config': None,
+    'in_dim': 4,
+    'dim': 320,
+    'y_dim': 1024,
+    'context_dim': 1024,
+    'out_dim': 4,
+    'dim_mult': [1, 2, 4, 4],
+    'num_heads': 8,
+    'head_dim': 64,
+    'num_res_blocks': 2,
+    'dropout': 0.1,
+    'temporal_attention': True,
+    'num_tokens': 4,
+    'temporal_attn_times': 1,
+    'use_checkpoint': True,
+    'use_fps_condition': False,
+    'use_sim_mask': False
+}
+video_compositions: ['image', 'local_image', 'dwpose', 'randomref', 'randomref_pose']
+Diffusion: {
+    'type': 'DiffusionDDIM',
+    'schedule': 'linear_sd', 
+    'schedule_param': {
+        'num_timesteps': 1000,
+        "init_beta": 0.00085, 
+        "last_beta": 0.0120,
+        'zero_terminal_snr': True,
+    },
+    'mean_type': 'v',
+    'loss_type': 'mse',
+    'var_type': 'fixed_small', # 'fixed_small', 'fixed_large', 'learned'
+    'rescale_timesteps': False,
+    'noise_strength': 0.1
+}
+
+latent_random_ref: True
+use_fps_condition: False
+
+# checkpoint_model: checkpoints/unianimate_16f_32f_non_ema_223000.pth
+checkpoint_model: log_outputs/UniAnimate_train_accelerate/checkpoints/20240909124900/non_ema_12_00004000.pth
+pretrained_model: /home/admin/workspace/aop_lab/zhoushengzhe/weights/iic_models/iic/tf-t2v/tft2v_vcomposer_non_ema_254000.pth
+
+chunk_size: 4
+decoder_bs: 4
+lr: 0.00003
+
+p_zero: 0.1
+noise_strength: 0.1
+
+# Loss
+freezen_module: False
+use_hand_mask_loss: True
+use_face_mask_loss: False
+
+
+# classifier-free guidance
+guide_scale: 3.0
+num_steps: 1000000
+
+# Log
+log_interval: 1
+seed: 8888
+use_DiffusionDPM: False
+log_dir: "log_outputs/"
+
+
+# distributed training
+gradient_accumulation_steps: 1
+enable_xformers_memory_efficient_attention: True
+max_grad_norm: 1.0
+mixed_precision: 'fp16'
+
+# lr
+scale_lr: False 
+lr_warmup_steps: 1
+lr_scheduler: 'constant'
+
+# optimizer
+use_8bit_adam: False
+adam_beta1: 0.9
+adam_beta2: 0.999
+adam_epsilon: 1.0e-8
+
+# Store
+resume_from_checkpoint: ''
+checkpointing_steps: 1000000
+save_model_epoch_interval: 15
+save_ckpt_interval: 500  
+viz_interval: 200        # 20
