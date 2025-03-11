@@ -298,7 +298,7 @@ class DiffusionDDIM(object):
         return xt
     
     @torch.no_grad()
-    def plms_sample(self, xt, t, model, model_kwargs={}, clamp=None, percentile=None, condition_fn=None, guide_scale=None, plms_timesteps=20):
+    def plms_sample(self, xt, t, model, model_kwargs={}, clamp=None, percentile=None, condition_fn=None, guide_scale=None, plms_timesteps=20, eps_cache=None):
         r"""Sample from p(x_{t-1} | x_t) using PLMS.
             - condition_fn: for classifier-based guidance (guided-diffusion).
             - guide_scale: for classifier-free guidance (glide/dalle-2).
@@ -875,7 +875,7 @@ class DiffusionDDIMLong(object):
         return xt
     
     @torch.no_grad()
-    def plms_sample(self, xt, t, model, model_kwargs={}, clamp=None, percentile=None, condition_fn=None, guide_scale=None, plms_timesteps=20):
+    def plms_sample(self, xt, t, model, model_kwargs={}, clamp=None, percentile=None, condition_fn=None, guide_scale=None, plms_timesteps=20, eps_cache=None):
         r"""Sample from p(x_{t-1} | x_t) using PLMS.
             - condition_fn: for classifier-based guidance (guided-diffusion).
             - guide_scale: for classifier-free guidance (glide/dalle-2).
@@ -1134,4 +1134,3 @@ def context_scheduler(
                 e % num_frames
                 for e in range(j, j + context_size * context_step, context_step)
             ]
-

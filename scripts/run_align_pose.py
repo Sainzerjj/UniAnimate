@@ -909,24 +909,3 @@ if __name__=='__main__':
     args = parse_args()
     mp_main(args)
     
-
-'''
-python xhd-run_align_pose.py --ref_name /youtu_shuziren_qy_large/users/sagezhou/UniAnimate/photostudio_ai/ref_imgs/0719_REF01.jpg --source_video_paths /youtu_shuziren_qy_large/users/sagezhou/UniAnimate/taobao/videos/0002.mp4 --saved_pose_dir /youtu_shuziren_qy_large/users/sagezhou/UniAnimate/photostudio_ai/max_shoulder_pose_3k/0719_REF01
-
-python xhd-run_align_pose.py --ref_name /youtu_shuziren_qy_large/users/sagezhou/UniAnimate/photostudio_ai/ref_imgs/0719_REF04.jpg --source_video_paths /youtu_shuziren_qy_large/users/sagezhou/UniAnimate/taobao/videos/0002.mp4 --saved_pose_dir /youtu_shuziren_qy_large/users/sagezhou/UniAnimate/photostudio_ai/max_shoulder_pose_3k/0719_REF04
-
-python xhd-run_align_pose.py --ref_name /youtu_shuziren_qy_large/users/sagezhou/UniAnimate/photostudio_ai/ref_imgs/0719_REF06.jpg --source_video_paths /youtu_shuziren_qy_large/users/sagezhou/UniAnimate/taobao/videos/0002.mp4 --saved_pose_dir /youtu_shuziren_qy_large/users/sagezhou/UniAnimate/photostudio_ai/max_shoulder_pose_3k/0719_REF06
-
-python run_align_pose.py --ref_name xxx.jpg --source_video_paths xxx.mp4 --saved_pose_dir xxx
-
-python xhd-run_align_pose.py --ref_name /nas_mount/xianghaodong/0-test/infer-test/case_5961256/0716_5961256.jpg --source_video_paths /nas_mount/xianghaodong/UniAnimate/data/videos/source_video.mp4 --saved_pose_dir /nas_mount/xianghaodong/0-test/infer-test/case_5961256_source_video-align_v2
-
-python xhd-run_align_pose.py --ref_name /nas_mount/xianghaodong/0-test/infer-test/case_5961256/0716_5961256.jpg --source_video_paths /nas_mount/xianghaodong/UniAnimate/data/videos/source_video.mp4 --saved_pose_dir /nas_mount/xianghaodong/0-test/infer-test/case_5961256_source_video-align_v2_first_frame
-
-python xhd-run_align_pose.py --ref_name /nas_mount/xianghaodong/0-test/ref/reference.png --source_video_paths /nas_mount/xianghaodong/UniAnimate/data/videos/source_video_16fps.mp4 --saved_pose_dir /nas_mount/xianghaodong/0-test/ref/reference_pose
-
-14:47-50-53
-01
-python xhd-run_align_pose.py --ref_name /nas_mount/xianghaodong/0-test/ref/ref01.jpg --source_video_paths /nas_mount/xianghaodong/UniAnimate/data/videos/source_video_16fps.mp4 --saved_pose_dir /nas_mount/xianghaodong/0-test/ref/ref01_pose
-
-'''

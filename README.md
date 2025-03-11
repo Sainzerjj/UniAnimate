@@ -6,7 +6,7 @@ The unofficial implementation of the paper "UniAnimate: Taming Unified Video Dif
 
 ## TODO
 - [x] The training code for the models on higher resolution videos.
-- [ ] The training code for the models based on VideoLCM for faster video synthesis.
+- [x] The training code for the models based on VideoLCM for faster video synthesis.
 
 
 
