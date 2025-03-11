@@ -66,9 +66,14 @@ Finally, the model weights will be organized in `./checkpoints/` as follows:
 Modify the `vid_dataset` variable in `configs/UniAnimate_train_accelerate.yaml` to prepare the training dataset. The content of the JSON file `data/dance_dataset.json` consists of the training video and corresponding pose video paths, which would be read in the Dataset Class `UniAnimateDataset`, defined in `tools/dataset/unianimate_dataset.py`.
 
 ### (4) Training the UniAnimate
-Execute the following command to start training:
+Execute the following command to start UniAnimate training:
 ```
 bash train_accelerate.sh
+```
+
+Execute the following command to start UniAnimate LCM distillation training:
+```
+bash train_accelerate_distill.sh
 ```
 
 ### (5) Pose alignment
